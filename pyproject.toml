@@ -1,0 +1,9 @@
+[project]
+name = "nyc-311-requests"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "kafka-python>=2.3.0",
+]
