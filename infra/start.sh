@@ -42,6 +42,9 @@ docker exec kafka-broker /opt/kafka/bin/kafka-topics.sh --bootstrap-server local
 
 ADMIN_PASSWORD=$(docker compose logs airflow 2>&1 | grep "Password for user 'admin'" | tail -n 1 | awk -F": " '{print $2}')
 
+echo ""
+echo "🚀 Access Airflow at http://localhost:${AIRFLOW_PORT}"
+
 echo "Airflow username: admin"
 echo "Airflow password: $ADMIN_PASSWORD"
 
