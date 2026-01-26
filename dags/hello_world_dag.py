@@ -11,7 +11,7 @@ default_args = {
 
 
 def producer_function():
-    for i in range(100):
+    for i in range(10):
         yield (json.dumps({
             "message_id": i,
             "timestamp": datetime.now().isoformat(),
