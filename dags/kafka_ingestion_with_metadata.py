@@ -27,4 +27,5 @@ def kafka_ingestion_with_metadata():
     def create_metadata_table():
         PostgresHook(postgres_conn_id="postgres_default").run(CREATE_METADATA_TABLE_SQL)
 
-dag = kafka_ingestion_with_metadata()
+
+kafka_ingestion_with_metadata()
