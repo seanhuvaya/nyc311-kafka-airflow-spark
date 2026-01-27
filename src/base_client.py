@@ -3,6 +3,9 @@ from typing import Optional, Dict, Any
 
 import requests
 
+from src.config import Config
+
+
 class HttpMethod(Enum):
     GET = "GET"
     POST = "POST"
@@ -17,7 +20,7 @@ class BaseAPIClient:
             self,
             base_url: str,
             headers: Optional[Dict[str, str]] = None,
-            timeout: int = 10
+            timeout: int = Config.REQUEST_TIMEOUT
     ):
         self.base_url = base_url.rstrip("/")
         self.headers = headers or {}

@@ -4,6 +4,7 @@ from requests.adapters import HTTPAdapter
 from urllib3 import Retry
 
 from src.base_client import BaseAPIClient
+from src.config import Config
 
 
 class ResilientAPIClient(BaseAPIClient):
@@ -11,7 +12,7 @@ class ResilientAPIClient(BaseAPIClient):
             self,
             base_url: str,
             headers: Optional[Dict[str, str]] = None,
-            timeout: int = 10,
+            timeout: int = Config.REQUEST_TIMEOUT,
     ):
         super().__init__(base_url, headers, timeout)
 
