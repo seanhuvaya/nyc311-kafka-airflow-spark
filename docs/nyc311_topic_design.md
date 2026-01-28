@@ -24,6 +24,7 @@ If the `borough` field is **null or missing**, Kafka defaults to **round-robin p
 
 ### Borough -> Partition Mapping
 ![Borough Partition](./borough_partition.png)
+
 This mapping ensures:
 - Borough-level data locality
 - Deterministic partition assignment
