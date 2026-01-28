@@ -57,3 +57,9 @@ The primary goals of this project are to:
 This pipeline ingests NYC 311 requests data from NYC Open Data using the Socrata API. 
 Only a subset of fields required for analysis and deduplication of records are ingested.
 See [NYC 311 Schema Documentation](./docs/nyc311_schema.md) for details on which fields are ingested in this pipeline.
+
+## Kafka Topic Design
+This project uses a single Kafka topic (`nyc311.raw`) designed to support **parallel processing**, 
+**borough-level ordering**, and **efficient development-time retention**. Read more 
+[NYC311 Topic Design](./docs/nyc311_topic_design.md) 
+
