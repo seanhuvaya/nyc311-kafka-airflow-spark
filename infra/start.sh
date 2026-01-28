@@ -34,12 +34,6 @@ echo ""
 echo "Airflow connections:"
 docker exec airflow airflow connections list
 
-docker exec kafka-broker /opt/kafka/bin/kafka-topics.sh --bootstrap-server kafka-broker:9092 --create --if-not-exists --topic nyc311.raw --partitions 3 --replication-factor 1
-docker exec kafka-broker /opt/kafka/bin/kafka-topics.sh --bootstrap-server kafka-broker:9092 --create --if-not-exists --topic nyc311.enriched --partitions 5 --replication-factor 1
-
-echo "Kafka topics:"
-docker exec kafka-broker /opt/kafka/bin/kafka-topics.sh --bootstrap-server localhost:9092 --list
-
 ADMIN_PASSWORD=$(docker compose logs airflow 2>&1 | grep "Password for user 'admin'" | tail -n 1 | awk -F": " '{print $2}')
 
 echo ""
