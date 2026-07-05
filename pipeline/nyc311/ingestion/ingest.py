@@ -21,11 +21,12 @@ def ingest_nyc311_requests(s3_key: str, start_date: datetime | None = None) -> d
     if start_date is None:
         start_date = load_metadata_from_s3(s3_client, s3_save_key=s3_key)
         if start_date is None:
-            start_date = datetime.now(ZoneInfo("America/New_York")) - timedelta(days=2)
+            start_date = datetime.now(ZoneInfo("America/New_York"))
             logger.warning(f"No S3 metadata found — falling back | effective_start_date={start_date}")
         else:
             logger.info(f"Resuming from S3 watermark | watermark={start_date}")
 
+    start_date = start_date - timedelta(days=1)
     logger.info(f"Starting ingestion | s3_key={s3_key}, start_date={start_date}")
 
     latest_created_date = extract_nyc311_requests_since(
