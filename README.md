@@ -13,7 +13,11 @@ The pipeline pulls data from the [NYC Open Data API](https://data.cityofnewyork.
 
 ## Architecture
 
-![Architecture Diagram](./docs/NYC%20311%20Data%20Pipeline%20Architecture.png)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="./docs/architecture-diagram.dark.png">
+  <source media="(prefers-color-scheme: light)" srcset="./docs/architecture-diagram.light.png">
+  <img alt="Architecture Diagram" src="./images/architecture-diagram.light.png">
+</picture>
 
 ### Data Flow
 
