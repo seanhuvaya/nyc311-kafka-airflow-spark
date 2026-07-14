@@ -19,31 +19,6 @@ The pipeline pulls data from the [NYC Open Data API](https://data.cityofnewyork.
   <img alt="Architecture Diagram" src="./images/architecture-diagram.light.png">
 </picture>
 
-### Data Flow
-
-```
-NYC Open Data API (erm2-nwe9.csv)
-      │
-      ▼
-[Airflow] ingest_nyc311_requests()
-      │  Watermark-based, paginated extraction
-      │  Watermark stored in {s3_key}/metadata.json after each run
-      ▼
-MinIO → bronze/daily/date={date} or bronze/historical
-      │  Raw CSVs
-      ▼
-[Airflow] transform()
-      │  clean.py: type casting, deduplication, null imputation
-      │  enrich.py: is_closed flag, resolution_time_in_hours
-      ▼
-MinIO → silver/
-      ▼
-[Airflow] load()
-      │  Upsert on unique_key; COALESCE handles late-arriving closures
-      ▼
-PostgreSQL gold schema → FastAPI → React Dashboard
-```
-
 ## Tech Stack
 
 | Layer | Technology |
